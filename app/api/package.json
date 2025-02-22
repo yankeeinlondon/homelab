@@ -7,6 +7,6 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@yankeeinlondon/homelab": "*"
+    "@yankeeinlondon/homelab-lib": "workspace:*"
   }
 }
