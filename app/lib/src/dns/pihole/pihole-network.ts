@@ -1,7 +1,7 @@
 import type { PiholeDevice, PiholeGateway, PiholeInterface, PiholeRoute } from "~/types";
-import { piholeApiCall } from "../../utils/api";
+import { piholeApiCall } from "~/utils";
 
-export interface PiholeGetDevicesReq {
+export type PiholeGetDevicesReq = {
   max_devices?: number;
   max_addresses?: number;
 }
@@ -11,29 +11,29 @@ export interface PiholeGetDevicesRes {
   took: number;
 }
 
-export interface PiholeGetGatewayReq {
+export type PiholeGetGatewayReq = {
   detailed?: boolean;
 }
 
-export interface PiholeGetGatewayRes<D extends boolean> {
+export type PiholeGetGatewayRes<D extends boolean> = {
   gateway: PiholeGateway<D>[];
   took: number;
 }
 
-export interface PiholeGetInterfacesReq {
+export type PiholeGetInterfacesReq ={
   detailed?: boolean;
 }
 
-export interface PiholeGetInterfacesRes {
+export type PiholeGetInterfacesRes = {
   interfaces: PiholeInterface[];
   took: number;
 }
 
-export interface PiholeGetRoutesReq {
+export type PiholeGetRoutesReq = {
   detailed?: boolean;
 }
 
-export interface PiholeGetRoutesRes {
+export type PiholeGetRoutesRes = {
   routes: PiholeRoute[];
   took: number;
 }

@@ -1,4 +1,4 @@
-import { piholeApiCall } from "../../utils/api";
+import { piholeApiCall } from "~/utils";
 
 export function piholeFtlApi(
   address: string,

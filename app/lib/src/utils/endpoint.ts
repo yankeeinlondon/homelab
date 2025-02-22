@@ -13,5 +13,5 @@ export function endpoint<
     ? offset === ""
       ? `http://${address}/api${qp}`
       : `http://${address}/api/${offset}${qp}`
-    : `http://${address}/api/${offset}`;
+    : `http://${address}/api/${offset}${qp}`;
 }

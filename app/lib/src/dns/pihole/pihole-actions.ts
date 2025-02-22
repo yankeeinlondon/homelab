@@ -1,4 +1,4 @@
-import { piholeApiCall } from "../../utils/api";
+import { piholeApiCall } from "~/utils";
 
 /**
  * Methods used to trigger certain actions on your Pi-hole

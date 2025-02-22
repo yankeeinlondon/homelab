@@ -183,3 +183,5 @@ config.ts
 .aider*
 
 prompts/*
+
+.turbo/cache

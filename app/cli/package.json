@@ -1,12 +1,21 @@
 {
-  "name": "@yankeeinlondon/homelab-cli",
-  "version": "0.0.1",
-  "main": "dist/cli/index.js",
-  "types": "dist/cli/index.d.ts",
-  "scripts": {
-    "build": "tsup"
-  },
-  "dependencies": {
-    "@yankeeinlondon/homelab": "*"
-  }
+    "name": "@yankeeinlondon/homelab-cli",
+    "version": "0.0.1",
+    "bin": {
+        "hl": "dist/index.mjs"
+    },
+    "type": "module",
+    "scripts": {
+        "build": "tsup src/index.ts --format=esm",
+        "lint": "eslint src"
+    },
+    "dependencies": {
+        "@yankeeinlondon/homelab": "workspace:*",
+        "chalk": "^5.4.1",
+        "pathe": "^2.0.3",
+        "pino": "^9.6.0"
+    },
+    "devDependencies": {
+        "@microsoft/api-extractor": "^7.50.1"
+    }
 }

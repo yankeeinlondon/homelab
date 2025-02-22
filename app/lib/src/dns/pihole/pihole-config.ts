@@ -1,5 +1,5 @@
 import type { PiholeConfig } from "~/types";
-import { piholeApiCall } from "../../utils/api";
+import { piholeApiCall } from "~/utils";
 
 export function piholeConfigApi(
   address: string,

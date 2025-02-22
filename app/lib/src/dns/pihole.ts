@@ -3,11 +3,10 @@ import type {
   PiholeAuthResp,
   PiholeAuthResponse__SUCCESS,
 } from "~/types";
-import chalk from "chalk";
 import { isDefined } from "inferred-types";
 import { FailedAuth, RequirementMissing } from "~/errors";
 import { isError } from "~/type-guards";
-import { endpoint, info } from "~/utils";
+import { endpoint } from "~/utils";
 import { piholeActionsApi } from "./pihole/pihole-actions";
 import { piholeClientApi } from "./pihole/pihole-client";
 import { piholeDnsApi } from "./pihole/pihole-dns";
@@ -17,7 +16,6 @@ import { piholeGroupApi } from "./pihole/pihole-group";
 import { piholeListApi } from "./pihole/pihole-list";
 import { piholeMetricsApi } from "./pihole/pihole-metrics";
 import { piholeNetworkApi } from "./pihole/pihole-network";
-import "dotenv/config";
 
 function isSuccessfulPiholeAuth(resp: PiholeAuthResp): resp is PiholeAuthResponse__SUCCESS {
   return !("error" in (resp as PiholeAuthReponse__FAILURE));
@@ -34,8 +32,6 @@ async function authorize(address: string): Promise<Error | PiholeAuthResponse__S
       password = process.env.PASSWORD;
     }
     else {
-      info(`${chalk.red.bold("⤬")} no password known for the address ${chalk.bold.blue(address)}!`, "");
-
       return RequirementMissing(`Pihole could not authorize because no password is known for the address: ${address}`);
     }
   }

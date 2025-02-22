@@ -1,6 +1,6 @@
 {
-  "$schema": "https://turbo.build/schema.json#",
-  "pipeline": {
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", "build/**"]
@@ -10,6 +10,10 @@
       "persistent": true
     },
     "lint": {},
-    "test": {}
+    "test": {},
+    "upgrade":{
+        "dependsOn": ["^upgrade"],
+        "outputs": ["./"]
+    }
   }
 }

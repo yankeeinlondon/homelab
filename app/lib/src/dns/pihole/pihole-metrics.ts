@@ -3,7 +3,7 @@ import type { Domain, PiholeClient__History, PiholeClientHistoryTimestamp, Pihol
 import { isUndefined } from "inferred-types";
 import { piholeApiCall } from "../../utils/api";
 
-export interface PiholeQueriesResponse {
+export type PiholeQueriesResponse = {
   queries: PiholeQuery[];
   cursor: Integer;
   recordsTotal: Integer;
@@ -12,7 +12,7 @@ export interface PiholeQueriesResponse {
   took: number;
 }
 
-export interface PiholeQuerySuggestionsResponse {
+export type PiholeQuerySuggestionsResponse = {
   suggestions: {
     domain: string[];
     client_ip: string[];
@@ -26,26 +26,26 @@ export interface PiholeQuerySuggestionsResponse {
   took: number;
 }
 
-export interface PiholeTopReq {
+export type PiholeTopReq = {
   blocked?: boolean;
   count?: number;
 }
 
-export interface PiholeTopDomainsResponse {
+export type PiholeTopDomainsResponse = {
   domains: { domain: Domain; count: Integer }[];
   total_queries: Integer;
   blocked_queries: Integer;
   took: number;
 }
 
-export interface PiholeTopClientsResponse {
+export type PiholeTopClientsResponse = {
   clients: PiholeTopClient[];
   total_queries: number;
   blocked_queries: number;
   took: number;
 }
 
-export interface PiholeClientHistoryResponse {
+export type PiholeClientHistoryResponse = {
   clients: PiholeClient__History;
   history: PiholeClientHistoryTimestamp[];
   took: number;

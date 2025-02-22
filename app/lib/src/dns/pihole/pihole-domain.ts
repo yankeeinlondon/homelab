@@ -3,19 +3,19 @@ import type { Domain, PiholeDomain, PiholeDomainKind, PiholeDomainType, PiholePr
 import { isUndefined } from "inferred-types";
 import { piholeApiCall } from "../../utils/api";
 
-export interface PiholeAddDomainReq {
+export type PiholeAddDomainReq = {
   domain: Domain | Domain[];
   comment?: string;
   groups?: number[];
   enabled?: boolean;
 }
-export interface PiholeAddDomainResponse {
+export type PiholeAddDomainResponse = {
   domains: PiholeDomain[];
   processed: PiholeProcessingResult;
   took: number;
 }
 
-export interface PiholeReplaceDomainReq {
+export type PiholeReplaceDomainReq = {
   type: PiholeDomainType;
   kind: PiholeDomainKind;
   comment?: string;

@@ -2,17 +2,17 @@ import type { PiholeGroup, PiholeProcessingResult } from "~/types";
 import { isDefined } from "inferred-types";
 import { piholeApiCall } from "../../utils/api";
 
-export interface PiholeGroupResp {
+export type PiholeGroupResp = {
   groups: PiholeGroup[];
 }
 
-export interface PiholeAddGroupReq {
+export type PiholeAddGroupReq = {
   name: string | string[];
   comment?: string;
   enabled?: boolean;
 }
 
-export interface PiholeAddGroupResp {
+export type PiholeAddGroupResp = {
   groups: PiholeGroup[];
   processed: PiholeProcessingResult;
   took: number;

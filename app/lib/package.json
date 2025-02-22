@@ -1,12 +1,24 @@
 {
-  "name": "@yankeeinlondon/homelab",
-  "version": "0.0.1",
-  "main": "dist/lib/index.js",
-  "types": "dist/lib/index.d.ts",
-  "bin": {
-    "hl": "bin/index.js"
-  },
-  "scripts": {
-    "build": "tsup"
-  }
+    "name": "@yankeeinlondon/homelab",
+    "version": "0.0.1",
+    "scripts": {
+        "build": "tsup",
+        "lint": "eslint src"
+    },
+    "type": "module",
+    "types": "dist/lib/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs"
+        }
+    },
+    "dependencies": {
+        "@yankeeinlondon/kind-error": "^1.1.5",
+        "inferred-types": "^0.55.23",
+        "jsonlines": "^0.1.1"
+    },
+    "devDependencies": {
+        "@microsoft/api-extractor": "^7.50.1"
+    }
 }

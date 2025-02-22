@@ -1,12 +1,15 @@
 {
-  "name": "@yankeeinlondon/homelab-api",
-  "version": "0.0.1",
-  "main": "dist/api/index.js",
-  "types": "dist/api/index.d.ts",
-  "scripts": {
-    "build": "tsup"
-  },
-  "dependencies": {
-    "@yankeeinlondon/homelab-lib": "workspace:*"
-  }
+    "name": "@yankeeinlondon/homelab-api",
+    "version": "0.0.1",
+    "types": "dist/index.d.ts",
+    "type": "module",
+    "scripts": {
+        "build": "tsup"
+    },
+    "dependencies": {
+        "@yankeeinlondon/homelab": "workspace:*"
+    },
+    "devDependencies": {
+        "tsup": "^8.3.6"
+    }
 }

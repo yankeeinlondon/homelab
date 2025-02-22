@@ -1,14 +1,14 @@
 import type { PiholeClient } from "~/types";
-import { piholeApiCall } from "../../utils/api";
+import { piholeApiCall } from "~/utils";
 
-export interface PiholeAddClientReq {
+export type PiholeAddClientReq = {
   /** the client's IP, MAC, hostname, or interface */
   client: string | string[];
   comment?: string;
   groups?: number[];
 }
 
-export interface PiholeAddClientResponse {
+export type PiholeAddClientResponse = {
   clients: PiholeClient[];
   processed:
       null |
@@ -17,12 +17,12 @@ export interface PiholeAddClientResponse {
   took: number;
 }
 
-export interface PiholeReplaceClientReq {
+export type PiholeReplaceClientReq = {
   comment?: string;
   groups?: number[];
 }
 
-export interface PiholeClientSuggestionsResponse {
+export type PiholeClientSuggestionsResponse = {
   clients: {
     hwaddr: string;
     macVendor: string;

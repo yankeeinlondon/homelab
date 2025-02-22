@@ -1,13 +1,13 @@
 import type { PiholeBlockingStatus } from "~/types";
 import { piholeApiCall } from "../../utils/api";
 
-export interface PiholeBlockingStatusResponse {
+export type PiholeBlockingStatusResponse = {
   blocking: PiholeBlockingStatus;
   timer: null | number;
   took: number;
 }
 
-export interface PihholeBlockingReq {
+export type PihholeBlockingReq = {
   blocking: boolean;
   timer?: number | null;
 }

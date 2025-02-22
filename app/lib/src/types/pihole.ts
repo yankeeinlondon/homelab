@@ -213,7 +213,7 @@ export interface PiholeUpstreamProvider {
 
 export type PiholeBlockingStatus = "enabled" | "disabled";
 
-export interface PiholeQueryOptions {
+export type PiholeQueryOptions = {
   from?: number;
   until?: number;
   /** Number of results to return */
@@ -241,7 +241,7 @@ export type PiholeDomainType = "allow" | "deny";
 export type PiholeDomainKind = "exact" | "regex";
 export type Domain = DnsName;
 
-export interface PiholeDomain {
+export type PiholeDomain = {
   id: number;
   domain: DnsName;
   unicode: string;
@@ -254,10 +254,10 @@ export interface PiholeDomain {
   groups: number[];
 }
 
-export interface PiholeApiConfig<
+export type PiholeApiConfig<
   TReq = never,
   TQp extends Dictionary<string> = never,
-> {
+> = {
   body?: TReq;
   qp?: TQp;
 }
@@ -265,7 +265,7 @@ export interface PiholeApiConfig<
 /**
  * a configured client in the Pihole server
  */
-export interface PiholeClient {
+export type PiholeClient ={
   id: Integer;
   client: string;
   comment: string | null;
@@ -281,10 +281,10 @@ export type PiholeProcessingResult = null
 
 export type UnixTimestamp = number;
 
-export interface PiholeDevice {
+export type PiholeDevice ={
   id: Integer;
   hwaddr: string;
-  interface: string;
+  type: string;
   firstSeen: UnixTimestamp;
   lastQuery: UnixTimestamp;
   numQueries: Integer;
@@ -297,7 +297,7 @@ export interface PiholeDevice {
   }[];
 }
 
-export interface PiholeRoute {
+export type PiholeRoute = {
   table: number;
   family: PiholeAddressFamily;
   protocol: string;
