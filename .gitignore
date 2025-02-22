@@ -176,3 +176,7 @@ dist
 
 inventory.json
 inventory.jsonl
+
+.ts-*
+
+config.ts

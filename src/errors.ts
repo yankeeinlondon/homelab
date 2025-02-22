@@ -1,26 +1,23 @@
 import { createKindError } from "@yankeeinlondon/kind-error";
 
-export const PiholeApiError = (
-    address: string,
-    sid: string
-) => createKindError(
+export function PiholeApiError(address: string, sid: string) {
+  return createKindError(
     "PiholeApiError",
-    { address, sid }
-)
+    { address, sid },
+  );
+}
 
-export const NotFound = (
-    address: string,
-    sid: string
-) => createKindError(
+export function NotFound(address: string, sid: string) {
+  return createKindError(
     "NotFound",
-    { address, sid, code: 404 }
-)
-
+    { address, sid, code: 404 },
+  );
+}
 
 export const FailedAuth = createKindError(
-    "FailedAuth"
-)
+  "FailedAuth",
+);
 
 export const RequirementMissing = createKindError(
-    "RequirementsMissing"
-)
+  "RequirementsMissing",
+);
