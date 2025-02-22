@@ -1,15 +1,9 @@
-# dns
+# Homelab
 
-To install dependencies:
+> Fancy things for fancy Homelabs
 
-```bash
-bun install
-```
+## Features
 
-To run:
+- type safe **Pihole v6 API**
 
-```bash
-bun run index.ts
-```
 
-This project was created using `bun init` in bun v1.2.2. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
