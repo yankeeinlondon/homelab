@@ -180,3 +180,6 @@ inventory.jsonl
 .ts-*
 
 config.ts
+.aider*
+
+prompts/*
