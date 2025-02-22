@@ -1,31 +1,12 @@
 {
-    "name": "@yankeeinlondon/homelab",
+    "name": "@yankeeinlondon/homelab-monorepo",
+    "private": true,
     "type": "module",
     "scripts": {
-        "build": "run-p build:*",
-        "build:cli": "TARGET=cli tsup",
-        "build:lib": "TARGET=lib tsup",
-        "lint": "eslint src"
-    },
-    "bin": {
-        "hl": "bin/index.js"
-    },
-    "exports": {
-        ".": {
-            "types": "./dist/lib/index.d.ts",
-            "import": "./dist/lib/index.js",
-            "require": "./dist/lib/index.cjs"
-        },
-        "./ui": {
-            "types": "./dist/ui/index.d.ts",
-            "import": "./dist/ui/index.js",
-            "require": "./dist/ui/index.cjs"
-        },
-        "./api": {
-            "types": "./dist/api/index.d.ts",
-            "import": "./dist/api/index.js",
-            "require": "./dist/api/index.cjs"
-        }
+        "ask": "bun run ai/ask.ts",
+        "build": "turbo run build",
+        "dev": "turbo run dev",
+        "lint": "turbo run lint"
     },
     "devDependencies": {
         "@antfu/eslint-config": "^4.3.0",

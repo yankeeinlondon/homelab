@@ -1,0 +1,12 @@
+{
+  "name": "@yankeeinlondon/homelab",
+  "version": "0.0.1",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
+  "bin": {
+    "hl": "bin/index.js"
+  },
+  "scripts": {
+    "build": "tsup"
+  }
+}

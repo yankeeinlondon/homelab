@@ -1,0 +1,12 @@
+{
+  "name": "@yankeeinlondon/homelab-cli",
+  "version": "0.0.1",
+  "main": "dist/cli/index.js",
+  "types": "dist/cli/index.d.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "dependencies": {
+    "@yankeeinlondon/homelab": "*"
+  }
+}

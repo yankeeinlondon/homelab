@@ -1,0 +1,12 @@
+{
+  "name": "@yankeeinlondon/homelab-api",
+  "version": "0.0.1",
+  "main": "dist/api/index.js",
+  "types": "dist/api/index.d.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "dependencies": {
+    "@yankeeinlondon/homelab": "*"
+  }
+}
