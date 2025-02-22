@@ -1,0 +1,109 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@yankeeinlondon/kind-error':
+        specifier: ^1.1.5
+        version: 1.1.5
+      chalk:
+        specifier: ^5.4.1
+        version: 5.4.1
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
+      inferred-types:
+        specifier: ^0.55.23
+        version: 0.55.23
+      jsonlines:
+        specifier: ^0.1.1
+        version: 0.1.1
+    devDependencies:
+      '@types/bun':
+        specifier: latest
+        version: 1.2.2
+
+packages:
+
+  '@types/bun@1.2.2':
+    resolution: {integrity: sha512-tr74gdku+AEDN5ergNiBnplr7hpDp3V1h7fqI2GcR/rsUaM39jpSeKH0TFibRvU0KwniRx5POgaYnaXbk0hU+w==}
+
+  '@types/node@22.13.5':
+    resolution: {integrity: sha512-+lTU0PxZXn0Dr1NBtC7Y8cR21AJr87dLLU953CWA6pMxxv/UDc7jYAY90upcrie1nRcD6XNG5HOYEDtgW5TxAg==}
+
+  '@types/ws@8.5.14':
+    resolution: {integrity: sha512-bd/YFLW+URhBzMXurx7lWByOu+xzU9+kb3RboOteXYDfW+tr+JZa99OyNmPINEGB/ahzKrEuc8rcv4gnpJmxTw==}
+
+  '@yankeeinlondon/kind-error@1.1.5':
+    resolution: {integrity: sha512-hxW1Wck1S8jcJMHGwaSgQKtJ3LE+15wkGZo/TVpgTEjsaR/ixyPgU7gpPDdlAwqSrLLZN5EbJwXPUtpZh/EptQ==}
+
+  bun-types@1.2.2:
+    resolution: {integrity: sha512-RCbMH5elr9gjgDGDhkTTugA21XtJAy/9jkKe/G3WR2q17VPGhcquf9Sir6uay9iW+7P/BV0CAHA1XlHXMAVKHg==}
+
+  chalk@5.4.1:
+    resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
+    engines: {node: '>=12'}
+
+  error-stack-parser-es@0.1.5:
+    resolution: {integrity: sha512-xHku1X40RO+fO8yJ8Wh2f2rZWVjqyhb1zgq1yZ8aZRQkv6OOKhKWRUaht3eSCUbAOBaKIgM+ykwFLE+QUxgGeg==}
+
+  inferred-types@0.55.23:
+    resolution: {integrity: sha512-7g1SOEm478i2XNOZa6A+2uXE2bIgxoAL4WzTuPjKiqObrDJFOxwhdDjS8uje1RpSADpoHz1cSvNv3O/qdA7F9Q==}
+
+  jsonlines@0.1.1:
+    resolution: {integrity: sha512-ekDrAGso79Cvf+dtm+mL8OBI2bmAOt3gssYs833De/C9NmIpWDWyUO4zPgB5x2/OhY366dkhgfPMYfwZF7yOZA==}
+
+  pathe@2.0.3:
+    resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
+
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
+
+snapshots:
+
+  '@types/bun@1.2.2':
+    dependencies:
+      bun-types: 1.2.2
+
+  '@types/node@22.13.5':
+    dependencies:
+      undici-types: 6.20.0
+
+  '@types/ws@8.5.14':
+    dependencies:
+      '@types/node': 22.13.5
+
+  '@yankeeinlondon/kind-error@1.1.5':
+    dependencies:
+      chalk: 5.4.1
+      error-stack-parser-es: 0.1.5
+      inferred-types: 0.55.23
+      pathe: 2.0.3
+
+  bun-types@1.2.2:
+    dependencies:
+      '@types/node': 22.13.5
+      '@types/ws': 8.5.14
+
+  chalk@5.4.1: {}
+
+  dotenv@16.4.7: {}
+
+  error-stack-parser-es@0.1.5: {}
+
+  inferred-types@0.55.23: {}
+
+  jsonlines@0.1.1: {}
+
+  pathe@2.0.3: {}
+
+  undici-types@6.20.0: {}
