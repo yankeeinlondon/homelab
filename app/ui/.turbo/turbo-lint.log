@@ -1,0 +1,14 @@
+
+
+> @yankeeinlondon/homelab-ui@0.0.1 lint /Volumes/coding/personal/homelab/app/ui
+> eslint src
+
+[0m[0m
+[0m[4m/Volumes/coding/personal/homelab/app/ui/src/index.ts[24m[0m
+[0m  [2m1:1[22m   [31merror[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m1:25[22m  [31merror[39m  Missing semicolon                                                                  [2mstyle/semi[22m[0m
+[0m[0m
+[0m[31m[1m✖ 2 problems (2 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  1 error and 0 warnings potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

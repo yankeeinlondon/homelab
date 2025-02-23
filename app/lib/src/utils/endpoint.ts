@@ -15,3 +15,4 @@ export function endpoint<
       : `http://${address}/api/${offset}${qp}`
     : `http://${address}/api/${offset}${qp}`;
 }
+

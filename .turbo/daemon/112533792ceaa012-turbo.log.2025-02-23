@@ -1,0 +1,8 @@
+2025-02-23T01:04:15.330945Z ERROR turborepo_lib::daemon::server: package changes stream closed: channel closed
+2025-02-23T01:05:14.195145Z ERROR turborepo_lib::daemon::server: package changes stream closed: channel closed
+2025-02-23T01:06:30.452034Z ERROR turborepo_lib::daemon::server: package changes stream closed: channel closed
+2025-02-23T01:09:08.756292Z ERROR turborepo_lib::daemon::server: package changes stream closed: channel closed
+2025-02-23T01:13:58.052620Z ERROR turborepo_lib::daemon::server: package changes stream closed: channel closed
+2025-02-23T01:15:05.955063Z ERROR turborepo_lib::daemon::server: package changes stream closed: channel closed
+2025-02-23T01:15:12.137745Z ERROR turborepo_lib::daemon::server: package changes stream closed: channel closed
+2025-02-23T20:34:59.229309Z  WARN turborepo_filewatch: failed to wait for initial filesystem cookie: filewatching failed to start: waiting for cookie timed out: deadline has elapsed

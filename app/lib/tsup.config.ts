@@ -5,7 +5,7 @@ export default defineConfig({
     format: "esm",
     dts: true,
     // experimentalDts: true,
-    minify: true,
+    minify: false,
     outExtension: () => ({
         js: ".mjs",
         dts: ".ts"

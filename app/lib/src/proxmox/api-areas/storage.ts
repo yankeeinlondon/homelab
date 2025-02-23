@@ -1,5 +1,6 @@
 import type { ProxmoxStorageFormat } from "~/types";
-import { proxmoxApiCall } from "~/utils";
+import { proxmoxApiCall } from "../proxmoxApiCall";
+
 
 
 export function proxmoxStorageApi(
@@ -12,7 +13,7 @@ export function proxmoxStorageApi(
         getStorage(
             type?: ProxmoxStorageFormat
         ) {
-            return api<[{type?: ProxmoxStorageFormat}, string[]]>(
+            return api<[{type?: ProxmoxStorageFormat}, {data: string[]}]>(
                 "GET",
                 "getStorage",
                 "storage",

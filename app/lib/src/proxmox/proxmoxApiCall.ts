@@ -1,9 +1,7 @@
-import type { Dictionary } from "inferred-types";
+import { isDefined, isObject, isString, type Dictionary } from "inferred-types";
+import { ProxmoxApiError } from "~/errors";
 import type { HttpVerb, PiholeApiConfig } from "~/types";
-import chalk from "chalk";
-import { ensureLeading, ensureTrailing, isDefined, isObject, isString } from "inferred-types";
-import { PiholeApiError, ProxmoxApiError } from "~/errors";
-import { endpoint } from "~/utils";
+import { asQueryParameter } from "~/utils";
 
 function stringify(body: unknown) {
     return isString(body)
@@ -26,13 +24,31 @@ function isErrorResponse(val: unknown): boolean {
     );
 }
 
-export function piholeApiCall(
-    address: string,
-    sid: string,
+function endpoint<
+  T extends string,
+  Q extends Record<string, unknown>,
+>(address: T, offset: string, qpDefn?: Q) {
+  const qp = asQueryParameter((qpDefn || {}));
+
+  return offset === ""
+      ? `https://${address}:8006/api2/json${qp}`
+      : `https://${address}:8006/api2/json/${offset}${qp}`
+}
+
+// interface ExtendedRequestInit extends RequestInit {
+//     agent?: (parsedURL: URL) => Agent | undefined;
+// }
+
+export function proxmoxApiCall(
+    host: string,
+    key: string,
 ) {
-    address = ensureLeading(address, "http");
-    address = ensureTrailing(address, ":8006/api2/json");
-    const error = PiholeApiError(address, sid);
+    const error = ProxmoxApiError(host, `${key.slice(0, 4)}...${key.slice(-4,key.length)}`);
+    const authorization = { 
+        Authorization: `Bearer ${key}`,
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br"
+    }
 
     return async <
         TSchema extends [req: Dictionary<string>, resp: unknown] = [never, unknown],
@@ -44,12 +60,24 @@ export function piholeApiCall(
         config: TVerb extends "GET" ? PiholeApiConfig<never, TSchema[0]> : PiholeApiConfig<TSchema[0]> = {},
     ): Promise<TSchema[1] | Error> => {
         const url = verb === "GET" && isDefined(config.qp)
-            ? endpoint(address, path, sid, config.qp)
-            : endpoint(address, path, sid);
+            ? endpoint(host, path, config.qp)
+            : endpoint(host, path);
+
+        // TODO: This isn't great but the builtin `fetch` does
+        // not support adding an https agent which will accept
+        // local certs
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0' 
+        
         const opt = config.body
-            ? { method: verb, body: stringify(config.body) }
-            : { method: verb };
+            ? { 
+                method: verb, 
+                body: stringify(config.body), 
+                headers: authorization 
+            }
+            : { method: verb, headers: authorization };
+
         const req = await fetch(url, opt);
+
         if (req.ok) {
             const result = await req.json();
             if (isErrorResponse(result)) {
@@ -70,13 +98,13 @@ export function piholeApiCall(
         }
         else {
 
-
             return error(
-                `Failed [${req.status}] calling Pihole API endpoint "${name}" from ${chalk.blue(url)}!`,
+                `Failed [${req.status}] calling Proxmox API endpoint "${name}" from: ${url}!`,
                 {
                     verb,
                     url,
                     code: req.status,
+                    msg: req.statusText,
                     name,
                     ...(config.body ? { body: config.body } : {}),
                 },
@@ -84,5 +112,3 @@ export function piholeApiCall(
         }
     };
 }
-
-

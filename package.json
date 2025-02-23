@@ -14,7 +14,7 @@
         "@antfu/eslint-config": "^4.3.0",
         "@type-challenges/utils": "^0.1.1",
         "@types/bun": "latest",
-        "@types/node": "22",
+        "@types/node": "^22.13.5",
         "bumpp": "^10.0.3",
         "eslint": "^9.21.0",
         "eslint-plugin-format": "^1.0.1",
@@ -22,6 +22,7 @@
         "jiti": "^2.4.2",
         "npm-run-all": "^4.1.5",
         "tsup": "^8.3.6",
+        "turbo": "^2.4.2",
         "typed-tester": "^0.6.3",
         "typescript": "^5.7.3",
         "vitest": "^3.0.6"

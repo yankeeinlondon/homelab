@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "scripts": {
         "build": "tsup",
+        "watch": "tsup --watch",
         "lint": "eslint src"
     },
     "type": "module",
@@ -14,7 +15,7 @@
         }
     },
     "dependencies": {
-        "@yankeeinlondon/kind-error": "^1.1.5",
+        "@yankeeinlondon/kind-error": "^1.2.2",
         "inferred-types": "^0.55.23",
         "jsonlines": "^0.1.1"
     },
