@@ -11,7 +11,10 @@ export default antfu(
       overrides: {
         "style/indent-binary-ops": ["warn", 4],
         "array-callback-return": ["warn"],
-        "valid-typeof": ["warn"]
+        "valid-typeof": ["warn"], 
+        "node/prefer-global/process": ["off"],
+        "antfu/no-top-level-await": ["off"],
+        "no-console": ["off"]
       }
     },
     regexp: {

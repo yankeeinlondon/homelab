@@ -5,6 +5,7 @@
     "scripts": {
         "ask": "bun run ai/ask.ts",
         "build": "turbo run build",
+        "watch": "turbo run watch",
         "dev": "turbo run dev",
         "lint": "turbo run lint",
         "update:lib": "pnpm --filter \"app*\" update"

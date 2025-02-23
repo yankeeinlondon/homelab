@@ -357,7 +357,6 @@ export function proxmoxNodesStorageApi(
                 `nodes/${node}/storage/${storageId}/upload`
             )
         }
-        
     }
 
 } // end Storage
