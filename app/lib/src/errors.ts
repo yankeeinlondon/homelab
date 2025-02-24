@@ -29,3 +29,7 @@ export const FailedAuth = createKindError(
 export const RequirementMissing = createKindError(
   "RequirementsMissing",
 );
+
+export const InvalidNetworkAddress = createKindError(
+    "InvalidNetworkAddress"
+)

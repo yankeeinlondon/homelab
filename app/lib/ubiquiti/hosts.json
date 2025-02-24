@@ -1,0 +1,738 @@
+{
+    "data": [
+        {
+            "hardwareId": "a4aed1a0-14c4-526f-9db4-060c44543b8c",
+            "id": "E063DA8C399600000000047A6CC60000000004ACC0E0000000005E46CDD2:1474865589",
+            "ipAddress": "149.22.250.36",
+            "isBlocked": false,
+            "lastConnectionStateChange": "2025-02-21T23:31:15Z",
+            "latestBackupTime": "2025-02-19T17:49:30Z",
+            "owner": true,
+            "registrationTime": "2020-08-28T15:57:50Z",
+            "reportedState": {
+                "anonid": "63807a53-b12b-496d-865c-681e412b8ac2",
+                "apps": [
+                    {
+                        "controllerStatus": "READY",
+                        "name": "users",
+                        "port": 9080,
+                        "swaiVersion": 2,
+                        "type": "app",
+                        "version": "1.8.43+3814"
+                    },
+                    {
+                        "controllerStatus": "READY",
+                        "installState": "installed",
+                        "isConfigured": true,
+                        "isInstalled": true,
+                        "isRunning": true,
+                        "name": "uid-agent",
+                        "port": 6080,
+                        "state": "active",
+                        "status": "ok",
+                        "statusMessage": "",
+                        "swaiVersion": 2,
+                        "type": "app",
+                        "version": "1.57.2+3154"
+                    }
+                ],
+                "availableChannels": [
+                    "release",
+                    "beta",
+                    "release-candidate"
+                ],
+                "consolesOnSameLocalNetwork": [
+                    "E063DA869F2C"
+                ],
+                "controller_uuid": "E063DA8C399600000000047A6CC60000000004ACC0E0000000005E46CDD2:1474865589",
+                "controllers": [
+                    {
+                        "abridged": true,
+                        "controllerStatus": "READY",
+                        "initialDeviceListSynced": true,
+                        "installState": "installed",
+                        "isConfigured": true,
+                        "isInstalled": true,
+                        "isRunning": true,
+                        "name": "network",
+                        "port": 8081,
+                        "releaseChannel": "release",
+                        "required": true,
+                        "state": "active",
+                        "status": "ok",
+                        "statusMessage": "",
+                        "swaiVersion": 3,
+                        "type": "controller",
+                        "uiVersion": "9.0.114.0",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "updateAvailable": null,
+                        "updateProgress": 100,
+                        "version": "9.0.114"
+                    },
+                    {
+                        "installState": "uninstalled",
+                        "installable": false,
+                        "isConfigured": false,
+                        "isInstalled": false,
+                        "isRunning": false,
+                        "name": "protect",
+                        "port": 7080,
+                        "releaseChannel": "release",
+                        "state": "inactive",
+                        "status": "offline",
+                        "statusMessage": "",
+                        "type": "controller",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "version": null
+                    },
+                    {
+                        "installState": "uninstalled",
+                        "installable": false,
+                        "isConfigured": false,
+                        "isInstalled": false,
+                        "isRunning": false,
+                        "name": "access",
+                        "port": 12080,
+                        "releaseChannel": "release",
+                        "state": "inactive",
+                        "status": "offline",
+                        "statusMessage": "",
+                        "type": "controller",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "version": null
+                    },
+                    {
+                        "installState": "uninstalled",
+                        "installable": false,
+                        "isConfigured": false,
+                        "isInstalled": false,
+                        "isRunning": false,
+                        "name": "talk",
+                        "port": 30080,
+                        "releaseChannel": "release",
+                        "state": "inactive",
+                        "status": "offline",
+                        "statusMessage": "",
+                        "type": "controller",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "version": null
+                    },
+                    {
+                        "installState": "uninstalled",
+                        "installable": false,
+                        "isConfigured": false,
+                        "isInstalled": false,
+                        "isRunning": false,
+                        "name": "connect",
+                        "port": 54480,
+                        "releaseChannel": "release",
+                        "state": "inactive",
+                        "status": "offline",
+                        "statusMessage": "",
+                        "type": "controller",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "version": null
+                    },
+                    {
+                        "controllerStatus": "READY",
+                        "initialDeviceListSynced": true,
+                        "installState": "installed",
+                        "installable": true,
+                        "isConfigured": true,
+                        "isInstalled": true,
+                        "isRunning": true,
+                        "name": "innerspace",
+                        "port": 17080,
+                        "releaseChannel": "release",
+                        "state": "active",
+                        "status": "ok",
+                        "statusMessage": "",
+                        "swaiVersion": 5,
+                        "type": "controller",
+                        "uiVersion": "1.1.8",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "updateAvailable": "1.1.28",
+                        "version": "1.1.8"
+                    }
+                ],
+                "country": 826,
+                "deviceErrorCode": null,
+                "deviceState": "updateAvailable",
+                "deviceStateLastChanged": 1737208164,
+                "directConnectDomain": "e063da8c3996047a6cc604acc0e05e46cdd2.id.ui.direct",
+                "features": {
+                    "cloud": {
+                        "applicationEvents": true,
+                        "applicationEventsHttp": true
+                    },
+                    "cloudBackup": true,
+                    "deviceList": {
+                        "autolinkDevices": true,
+                        "partialUpdates": true,
+                        "ucp4Events": true
+                    },
+                    "directRemoteConnection": true,
+                    "hasGateway": true,
+                    "hasLCM": true,
+                    "hasLED": false,
+                    "infoApis": {
+                        "firmwareUpdate": true
+                    },
+                    "isAutomaticFailoverAvailable": false,
+                    "mfa": true,
+                    "notifications": true,
+                    "sharedTokens": true,
+                    "supportForm": true,
+                    "teleport": true,
+                    "teleportState": "ENABLED",
+                    "uidService": true
+                },
+                "firmwareUpdate": {
+                    "latestAvailableVersion": "4.1.13+1abc0d9"
+                },
+                "hardware": {
+                    "bom": "113-00723-08",
+                    "cpu.id": "411fd073-00000000",
+                    "debianCodename": "bullseye",
+                    "firmwareVersion": "4.0.21",
+                    "hwrev": 185096,
+                    "isUbios": false,
+                    "mac": "E063DA8C3996",
+                    "name": "UniFi Dream Machine Pro",
+                    "qrid": "nqWAEl",
+                    "reboot": "30",
+                    "serialno": "e063da8c3996",
+                    "shortname": "UDMPRO",
+                    "subtype": "",
+                    "sysid": 59925,
+                    "upgrade": "310",
+                    "uuid": "a4aed1a0-14c4-526f-9db4-060c44543b8c"
+                },
+                "host_type": 59925,
+                "hostname": "LondonDream",
+                "internetIssues5min": {
+                    "periods": [
+                        {
+                            "index": 5777826
+                        }
+                    ]
+                },
+                "ip": "149.22.250.36",
+                "ipAddrs": [
+                    "fe80::e263:daff:fe8c:39a0",
+                    "149.22.250.36",
+                    "fe80::8269:1aff:feb0:61db",
+                    "10.10.0.1",
+                    "fe80::e063:daff:fe8c:3997"
+                ],
+                "isStacked": false,
+                "isUbiosMigration": false,
+                "location": {
+                    "lat": 51.5244,
+                    "long": -0.1954,
+                    "radius": 200,
+                    "text": "London, Greater London, England, United Kingdom"
+                },
+                "mac": "E063DA8C3996",
+                "mgmt_port": 443,
+                "name": "London Dream",
+                "releaseChannel": "release",
+                "state": "connected",
+                "timezone": "Europe/London",
+                "ucareState": null,
+                "uidb": {
+                    "guid": "26816cf6-334b-4580-bc3f-f1b72ef5d93e",
+                    "id": "1812513c-f8a1-41c1-a698-86ac70b8bd87",
+                    "images": {
+                        "default": "57ad929bdc48df6a5a6855fbb7cd8d18",
+                        "mobile-connection": "7ff76992a2501b506330a722ab470fcb",
+                        "mobile-internet-connected": "3e158fb281b6f2cbf3f830e53d97b589",
+                        "mobile-no-internet": "26109bc1c764cda75815ba385c1a3ab1",
+                        "nopadding": "52bd54e97d8b7985b262a94814f26d90",
+                        "topology": "ecf578665ded4f14cf739c792bcbfd8f"
+                    }
+                },
+                "unadoptedUnifiOSDevices": [],
+                "version": "4.0.194"
+            },
+            "type": "console",
+            "userData": {
+                "apps": [
+                    "users",
+                    "uid-agent"
+                ],
+                "consoleGroupMembers": [
+                    {
+                        "mac": "E063DA8C3996",
+                        "role": "UNADOPTED",
+                        "roleAttributes": {
+                            "applications": {
+                                "access": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                },
+                                "apollo": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                },
+                                "connect": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                },
+                                "innerspace": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                },
+                                "network": {
+                                    "owned": false,
+                                    "required": true,
+                                    "supported": true
+                                },
+                                "protect": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                },
+                                "talk": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                }
+                            },
+                            "candidateRoles": [
+                                "PRIMARY"
+                            ],
+                            "connectedState": "CONNECTED",
+                            "connectedStateLastChanged": "2024-07-16T10:58:38.206Z"
+                        },
+                        "sysId": 59925
+                    }
+                ],
+                "controllers": [
+                    "network",
+                    "protect",
+                    "access",
+                    "talk",
+                    "connect",
+                    "innerspace"
+                ],
+                "email": "ken@ken.net",
+                "features": {
+                    "deviceGroups": true,
+                    "floorplan": {
+                        "canEdit": true,
+                        "canView": true
+                    },
+                    "manageApplications": true,
+                    "notifications": true,
+                    "pion": true,
+                    "webrtc": {
+                        "iceRestart": true,
+                        "mediaStreams": true,
+                        "twoWayAudio": true
+                    }
+                },
+                "fullName": "Ken Ui-4177792302",
+                "localId": "c6441a10-8c8a-468d-a3c1-b80050ee39dc",
+                "permissions": {
+                    "innerspace.management": [
+                        "admin"
+                    ],
+                    "network.management": [
+                        "admin"
+                    ],
+                    "system.management.location": [
+                        "admin"
+                    ],
+                    "system.management.user": [
+                        "admin"
+                    ]
+                },
+                "role": "owner",
+                "roleId": "298aa994-8b84-4461-aaf0-5808435cf16f",
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "hardwareId": "4c0a7eba-d3b6-5079-b200-f7b6364f29c6",
+            "id": "E063DA869F2C0000000004712F180000000004A263A2000000005E182976:888687155",
+            "ipAddress": "47.151.158.110",
+            "isBlocked": false,
+            "lastConnectionStateChange": "2025-02-21T20:23:42Z",
+            "latestBackupTime": "2025-02-20T21:31:28Z",
+            "owner": true,
+            "registrationTime": "2023-05-27T02:22:06Z",
+            "reportedState": {
+                "anonid": "25ef8678-8ee9-4639-8fbb-c99c3c67b342",
+                "apps": [
+                    {
+                        "controllerStatus": "READY",
+                        "name": "users",
+                        "port": 9080,
+                        "swaiVersion": 2,
+                        "type": "app",
+                        "uiVersion": "1.9.73-2907",
+                        "version": "1.9.73+4525"
+                    }
+                ],
+                "autoUpdate": {
+                    "includeApplications": false,
+                    "preferencesPrompt": null,
+                    "schedule": null
+                },
+                "availableChannels": [
+                    "release",
+                    "release-candidate",
+                    "beta"
+                ],
+                "consolesOnSameLocalNetwork": [],
+                "controller_uuid": "E063DA869F2C0000000004712F180000000004A263A2000000005E182976:888687155",
+                "controllers": [
+                    {
+                        "controllerStatus": "READY",
+                        "initialDeviceListSynced": true,
+                        "installState": "installed",
+                        "integrationApis": [
+                            {
+                                "apiDocsLocation": "/proxy/network/api-docs/integration.json",
+                                "name": "Integration",
+                                "version": "0.1"
+                            }
+                        ],
+                        "isConfigured": true,
+                        "isInstalled": true,
+                        "isRunning": true,
+                        "name": "network",
+                        "port": 8081,
+                        "releaseChannel": "release",
+                        "required": true,
+                        "state": "active",
+                        "status": "ok",
+                        "statusMessage": "",
+                        "swaiVersion": 3,
+                        "type": "controller",
+                        "uiVersion": "9.0.114.0",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "updateAvailable": null,
+                        "version": "9.0.114"
+                    },
+                    {
+                        "installState": "uninstalled",
+                        "installable": false,
+                        "isConfigured": false,
+                        "isInstalled": false,
+                        "isRunning": false,
+                        "name": "protect",
+                        "port": 7080,
+                        "releaseChannel": "release",
+                        "state": "inactive",
+                        "status": "offline",
+                        "statusMessage": "",
+                        "type": "controller",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "version": null
+                    },
+                    {
+                        "installState": "uninstalled",
+                        "installable": false,
+                        "isConfigured": false,
+                        "isInstalled": false,
+                        "isRunning": false,
+                        "name": "access",
+                        "port": 12080,
+                        "releaseChannel": "release",
+                        "state": "inactive",
+                        "status": "offline",
+                        "statusMessage": "",
+                        "type": "controller",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "version": null
+                    },
+                    {
+                        "installState": "uninstalled",
+                        "installable": false,
+                        "isConfigured": false,
+                        "isInstalled": false,
+                        "isRunning": false,
+                        "name": "talk",
+                        "port": 30080,
+                        "releaseChannel": "release",
+                        "state": "inactive",
+                        "status": "offline",
+                        "statusMessage": "",
+                        "type": "controller",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "version": null
+                    },
+                    {
+                        "installState": "uninstalled",
+                        "installable": false,
+                        "isConfigured": false,
+                        "isInstalled": false,
+                        "isRunning": false,
+                        "name": "connect",
+                        "port": 54480,
+                        "releaseChannel": "release",
+                        "state": "inactive",
+                        "status": "offline",
+                        "statusMessage": "",
+                        "type": "controller",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "version": null
+                    },
+                    {
+                        "controllerStatus": "READY",
+                        "initialDeviceListSynced": true,
+                        "installState": "installed",
+                        "installable": true,
+                        "isConfigured": true,
+                        "isInstalled": true,
+                        "isRunning": true,
+                        "name": "innerspace",
+                        "port": 17080,
+                        "releaseChannel": "release",
+                        "state": "active",
+                        "status": "ok",
+                        "statusMessage": "",
+                        "swaiVersion": 5,
+                        "type": "controller",
+                        "uiVersion": "1.1.28",
+                        "unadoptedDevices": [],
+                        "updatable": true,
+                        "updateAvailable": null,
+                        "version": "1.1.28"
+                    }
+                ],
+                "country": 840,
+                "deviceErrorCode": null,
+                "deviceState": "setup",
+                "deviceStateLastChanged": 1739974808,
+                "directConnectDomain": "e063da869f2c04712f1804a263a205e182976.id.ui.direct",
+                "features": {
+                    "apiIntegration": true,
+                    "cloud": {
+                        "applicationEvents": true,
+                        "applicationEventsHttp": true
+                    },
+                    "cloudBackup": true,
+                    "customSmtpServer": true,
+                    "deviceList": {
+                        "autolinkDevices": true,
+                        "partialUpdates": true,
+                        "ucp4Events": true
+                    },
+                    "directRemoteConnection": true,
+                    "hasGateway": true,
+                    "hasLCM": true,
+                    "hasLED": false,
+                    "infoApis": {
+                        "firmwareUpdate": true
+                    },
+                    "isAutomaticFailoverAvailable": false,
+                    "mfa": true,
+                    "notifications": true,
+                    "sharedTokens": true,
+                    "snmpConfig": false,
+                    "supportForm": true,
+                    "teleport": true,
+                    "teleportState": "ENABLED",
+                    "uidService": true,
+                    "updates": {
+                        "applicationSchedules": true
+                    }
+                },
+                "firmwareUpdate": {
+                    "latestAvailableVersion": null
+                },
+                "hardware": {
+                    "bom": "113-00723-08",
+                    "cpu.id": "411fd073-00000000",
+                    "debianCodename": "bullseye",
+                    "firmwareVersion": "4.1.13",
+                    "hwrev": 185096,
+                    "isUbios": false,
+                    "mac": "E063DA869F2C",
+                    "name": "UniFi Dream Machine Pro",
+                    "qrid": "V98ZYJ",
+                    "reboot": "30",
+                    "serialno": "e063da869f2c",
+                    "shortname": "UDMPRO",
+                    "subtype": "",
+                    "sysid": 59925,
+                    "upgrade": "310",
+                    "uuid": "4c0a7eba-d3b6-5079-b200-f7b6364f29c6"
+                },
+                "host_type": 59925,
+                "hostname": "VeniceDream",
+                "internetIssues5min": {
+                    "periods": [
+                        {
+                            "index": 5800202
+                        }
+                    ]
+                },
+                "ip": "",
+                "ipAddrs": [
+                    "fe80::e263:daff:fe86:9f2c",
+                    "fe80::e263:daff:fe86:9f2d",
+                    "fe80::e263:daff:fe86:9f36",
+                    "fe80::e263:daff:fe86:9f2e",
+                    "fe80::e263:daff:fe86:9f2f",
+                    "fe80::e263:daff:fe86:9f30",
+                    "fe80::e263:daff:fe86:9f31",
+                    "fe80::e263:daff:fe86:9f32",
+                    "fe80::e263:daff:fe86:9f33",
+                    "47.151.158.110",
+                    "fe80::e263:daff:fe86:9f35",
+                    "192.168.1.1",
+                    "fe80::e063:daff:fe86:9f2d"
+                ],
+                "isStacked": false,
+                "location": {
+                    "lat": 34.0125,
+                    "long": -118.4682,
+                    "radius": 200,
+                    "text": "Santa Monica, California, United States"
+                },
+                "mac": "E063DA869F2C",
+                "mgmt_port": 443,
+                "name": "Venice Dream",
+                "releaseChannel": "release",
+                "state": "connected",
+                "timezone": "America/Los_Angeles",
+                "ucareState": null,
+                "uidb": {
+                    "guid": "26816cf6-334b-4580-bc3f-f1b72ef5d93e",
+                    "id": "1812513c-f8a1-41c1-a698-86ac70b8bd87",
+                    "images": {
+                        "default": "57ad929bdc48df6a5a6855fbb7cd8d18",
+                        "mobile-connection": "7ff76992a2501b506330a722ab470fcb",
+                        "mobile-internet-connected": "3e158fb281b6f2cbf3f830e53d97b589",
+                        "mobile-no-internet": "26109bc1c764cda75815ba385c1a3ab1",
+                        "nopadding": "52bd54e97d8b7985b262a94814f26d90",
+                        "topology": "ecf578665ded4f14cf739c792bcbfd8f"
+                    }
+                },
+                "unadoptedUnifiOSDevices": [],
+                "version": "4.1.140"
+            },
+            "type": "console",
+            "userData": {
+                "apps": [
+                    "users"
+                ],
+                "consoleGroupMembers": [
+                    {
+                        "mac": "E063DA869F2C",
+                        "role": "UNADOPTED",
+                        "roleAttributes": {
+                            "applications": {
+                                "access": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                },
+                                "apollo": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                },
+                                "connect": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                },
+                                "innerspace": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                },
+                                "network": {
+                                    "owned": false,
+                                    "required": true,
+                                    "supported": true
+                                },
+                                "protect": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                },
+                                "talk": {
+                                    "owned": false,
+                                    "required": false,
+                                    "supported": true
+                                }
+                            },
+                            "candidateRoles": [
+                                "PRIMARY"
+                            ],
+                            "connectedState": "CONNECTED",
+                            "connectedStateLastChanged": "2024-07-08T22:15:15.539Z"
+                        },
+                        "sysId": 59925
+                    }
+                ],
+                "controllers": [
+                    "network",
+                    "protect",
+                    "access",
+                    "talk",
+                    "connect",
+                    "innerspace"
+                ],
+                "email": "ken@ken.net",
+                "features": {
+                    "deviceGroups": true,
+                    "floorplan": {
+                        "canEdit": true,
+                        "canView": true
+                    },
+                    "manageApplications": true,
+                    "notifications": true,
+                    "pion": true,
+                    "webrtc": {
+                        "iceRestart": true,
+                        "mediaStreams": true,
+                        "twoWayAudio": true
+                    }
+                },
+                "fullName": "Ken Snyder",
+                "localId": "349f8973-a1be-4b3d-830f-7a7dd0255df0",
+                "permissions": {
+                    "innerspace.management": [
+                        "admin"
+                    ],
+                    "network.management": [
+                        "admin"
+                    ],
+                    "system.management.location": [
+                        "admin"
+                    ],
+                    "system.management.user": [
+                        "admin"
+                    ]
+                },
+                "role": "owner",
+                "roleId": "3430ccb2-cf7a-4795-aa3a-7c49f3efccbe",
+                "status": "ACTIVE"
+            }
+        }
+    ],
+    "httpStatusCode": 200,
+    "traceId": "3718ec5d8d700365ad42cff724297704"
+}

@@ -11,8 +11,8 @@ export function endpoint<
 
   return sid
     ? offset === ""
-      ? `http://${address}/api${qp}`
-      : `http://${address}/api/${offset}${qp}`
-    : `http://${address}/api/${offset}${qp}`;
+      ? `https://${address}/api${qp}`
+      : `https://${address}/api/${offset}${qp}`
+    : `https://${address}/api/${offset}${qp}`;
 }
 

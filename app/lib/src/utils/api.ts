@@ -43,12 +43,22 @@ export function piholeApiCall(
         path: string,
         config: TVerb extends "GET" ? PiholeApiConfig<never, TSchema[0]> : PiholeApiConfig<TSchema[0]> = {},
     ): Promise<TSchema[1] | Error> => {
+        const headers = {
+            Accept: "*/*",
+            "Accept-Encoding": "gzip, deflate, br"
+        };
         const url = verb === "GET" && isDefined(config.qp)
             ? endpoint(address, path, sid, config.qp)
             : endpoint(address, path, sid);
         const opt = config.body
-            ? { method: verb, body: stringify(config.body) }
-            : { method: verb };
+            ? { method: verb, body: stringify(config.body), headers }
+            : { method: verb, headers };
+        
+        // TODO: This isn't great but the builtin `fetch` does
+        // not support adding an https agent which will accept
+        // local certs
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0' 
+
         const req = await fetch(url, opt);
         if (req.ok) {
             const result = await req.json();
@@ -69,8 +79,6 @@ export function piholeApiCall(
             }
         }
         else {
-
-
             return error(
                 `Failed [${req.status}] calling Pihole API endpoint "${name}" from ${chalk.blue(url)}!`,
                 {

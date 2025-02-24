@@ -1,9 +1,17 @@
-import type { ProxmoxExpectedService, ProxmoxLxc, ProxmoxNetwork, ProxmoxQemu, ProxmoxReplicationJob, ProxmoxService, ProxmoxStorage, ProxmoxStorageFormat, ProxmoxTask } from "~/types";
+import type { 
+    ProxmoxExpectedService, 
+    ProxmoxLxc, 
+    ProxmoxNetwork, 
+    ProxmoxQemu, 
+    ProxmoxReplicationJob, 
+    ProxmoxService, 
+    ProxmoxStorage, 
+    ProxmoxStorageFormat, 
+    ProxmoxTask 
+} from "~/types";
 import { proxmoxApiCall } from "../proxmoxApiCall";
 import { isError } from "~/type-guards";
 import type { Suggest } from "inferred-types";
-
-
 
 export function proxmoxNodesAptApi(
     host: string,

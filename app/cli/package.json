@@ -12,7 +12,10 @@
     },
     "dependencies": {
         "@yankeeinlondon/homelab": "workspace:*",
+        "@yankeeinlondon/kind-error": "^1.2.2",
         "chalk": "^5.4.1",
+        "inferred-types": "^0.55.23",
+        "network-scanner-js": "^1.1.5",
         "pathe": "^2.0.3",
         "pino": "^9.6.0"
     },

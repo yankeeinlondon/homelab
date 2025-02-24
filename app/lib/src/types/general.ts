@@ -25,3 +25,5 @@ export type Delimited<
 } & IsNever<U> extends true
 ? {}
 : { elements: U }
+
+export type HttpStatusCode = number;

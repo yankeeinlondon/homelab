@@ -7,15 +7,15 @@ import { isDefined } from "inferred-types";
 import { FailedAuth, RequirementMissing } from "~/errors";
 import { isError } from "~/type-guards";
 import { endpoint } from "~/utils";
-import { piholeActionsApi } from "./pihole/pihole-actions";
-import { piholeClientApi } from "./pihole/pihole-client";
-import { piholeDnsApi } from "./pihole/pihole-dns";
-import { piholeDomainApi } from "./pihole/pihole-domain";
-import { piholeFtlApi } from "./pihole/pihole-ftl";
-import { piholeGroupApi } from "./pihole/pihole-group";
-import { piholeListApi } from "./pihole/pihole-list";
-import { piholeMetricsApi } from "./pihole/pihole-metrics";
-import { piholeNetworkApi } from "./pihole/pihole-network";
+import { piholeActionsApi } from "./pihole-actions";
+import { piholeClientApi } from "./pihole-client";
+import { piholeDnsApi } from "./pihole-dns";
+import { piholeDomainApi } from "./pihole-domain";
+import { piholeFtlApi } from "./pihole-ftl";
+import { piholeGroupApi } from "./pihole-group";
+import { piholeListApi } from "./pihole-list";
+import { piholeMetricsApi } from "./pihole-metrics";
+import { piholeNetworkApi } from "./pihole-network";
 
 function isSuccessfulPiholeAuth(resp: PiholeAuthResp): resp is PiholeAuthResponse__SUCCESS {
   return !("error" in (resp as PiholeAuthReponse__FAILURE));
@@ -35,7 +35,7 @@ async function authorize(address: string): Promise<Error | PiholeAuthResponse__S
       return RequirementMissing(`Pihole could not authorize because no password is known for the address: ${address}`);
     }
   }
-  const url = endpoint(address, "auth");
+  const url = endpoint(address, "auth"); 
   const req = JSON.stringify({
     password,
   });
