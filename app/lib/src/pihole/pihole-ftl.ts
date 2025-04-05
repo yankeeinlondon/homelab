@@ -1,10 +1,11 @@
-import { piholeApiCall } from "~/utils";
+import { piholeApiCall } from "./piholeApiCall";
 
-export function piholeFtlApi(
+
+export async function piholeFtlApi(
   address: string,
   sid: string,
 ) {
-  const api = piholeApiCall(address, sid);
+  const api = await piholeApiCall(address, sid);
 
   return {
     getEndpoints() {

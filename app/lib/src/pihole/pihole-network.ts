@@ -1,5 +1,6 @@
 import type { PiholeDevice, PiholeGateway, PiholeInterface, PiholeRoute } from "~/types";
-import { piholeApiCall } from "~/utils";
+import { piholeApiCall } from "./piholeApiCall";
+
 
 export type PiholeGetDevicesReq = {
   max_devices?: number;
@@ -38,11 +39,11 @@ export type PiholeGetRoutesRes = {
   took: number;
 }
 
-export function piholeNetworkApi(
+export async function piholeNetworkApi(
   address: string,
   sid: string,
 ) {
-  const api = piholeApiCall(address, sid);
+  const api = await piholeApiCall(address, sid);
 
   return {
     /**

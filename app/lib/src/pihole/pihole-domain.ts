@@ -1,7 +1,7 @@
 import type { Suggest } from "inferred-types";
 import type { Domain, PiholeDomain, PiholeDomainKind, PiholeDomainType, PiholeProcessingResult } from "~/types";
 import { isUndefined } from "inferred-types";
-import { piholeApiCall } from "../../utils/api";
+import { piholeApiCall } from "./piholeApiCall";
 
 export type PiholeAddDomainReq = {
   domain: Domain | Domain[];
@@ -23,11 +23,11 @@ export type PiholeReplaceDomainReq = {
   enabled: boolean;
 }
 
-export function piholeDomainApi(
+export async function piholeDomainApi(
   address: string,
   sid: string,
 ) {
-  const api = piholeApiCall(address, sid);
+  const api = await piholeApiCall(address, sid);
 
   return {
 

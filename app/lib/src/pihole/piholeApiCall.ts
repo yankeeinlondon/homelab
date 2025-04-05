@@ -1,8 +1,9 @@
-import { isDefined, isObject, isString, type Dictionary } from "inferred-types";
-import { ProxmoxApiError } from "~/errors";
+import type { Dictionary } from "inferred-types";
 import type { HttpVerb, PiholeApiConfig } from "~/types";
+import chalk from "chalk";
+import { ensureLeading, ensureTrailing, isDefined, isObject, isString } from "inferred-types";
+import { PiholeApiError } from "~/errors";
 import { asQueryParameter } from "~/utils";
-
 
 function stringify(body: unknown) {
     return isString(body)
@@ -25,31 +26,34 @@ function isErrorResponse(val: unknown): boolean {
     );
 }
 
-function endpoint<
+export function endpoint<
   T extends string,
   Q extends Record<string, unknown>,
->(address: T, offset: string, qpDefn?: Q) {
-  const qp = asQueryParameter((qpDefn || {}));
+>(
+    address: T, 
+    offset: string, 
+    sid?: string, 
+    qpDefn?: Q
+) {
+  const qp = asQueryParameter({
+    sid,
+    ...(qpDefn || {}),
+  });
 
-  return offset === ""
-      ? `https://${address}:8006/api2/json${qp}`
-      : `https://${address}:8006/api2/json/${offset}${qp}`
+  return sid
+    ? offset === ""
+      ? `https://${address}/api${qp}`
+      : `https://${address}/api/${offset}${qp}`
+    : `https://${address}/api/${offset}${qp}`;
 }
 
-// interface ExtendedRequestInit extends RequestInit {
-//     agent?: (parsedURL: URL) => Agent | undefined;
-// }
-
-export function proxmoxApiCall(
-    host: string,
-    key: string,
+export async function piholeApiCall(
+    address: string,
+    sid: string,
 ) {
-    const error = ProxmoxApiError(host, `${key.slice(0, 4)}...${key.slice(-4,key.length)}`);
-    const authorization = { 
-        Authorization: `Bearer ${key}`,
-        Accept: "*/*",
-        "Accept-Encoding": "gzip, deflate, br"
-    }
+    address = ensureLeading(address, "http");
+    address = ensureTrailing(address, ":8006/api2/json");
+    const error = PiholeApiError(address, sid);
 
     return async <
         TSchema extends [req: Dictionary<string>, resp: unknown] = [never, unknown],
@@ -60,25 +64,23 @@ export function proxmoxApiCall(
         path: string,
         config: TVerb extends "GET" ? PiholeApiConfig<never, TSchema[0]> : PiholeApiConfig<TSchema[0]> = {},
     ): Promise<TSchema[1] | Error> => {
+        const headers = {
+            Accept: "*/*",
+            "Accept-Encoding": "gzip, deflate, br"
+        };
         const url = verb === "GET" && isDefined(config.qp)
-            ? endpoint(host, path, config.qp)
-            : endpoint(host, path);
-
+            ? endpoint(address, path, sid, config.qp)
+            : endpoint(address, path, sid);
+        const opt = config.body
+            ? { method: verb, body: stringify(config.body), headers }
+            : { method: verb, headers };
+        
         // TODO: This isn't great but the builtin `fetch` does
         // not support adding an https agent which will accept
         // local certs
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0' 
-        
-        const opt = config.body
-            ? { 
-                method: verb, 
-                body: stringify(config.body), 
-                headers: authorization 
-            }
-            : { method: verb, headers: authorization };
 
         const req = await fetch(url, opt);
-
         if (req.ok) {
             const result = await req.json();
             if (isErrorResponse(result)) {
@@ -98,14 +100,12 @@ export function proxmoxApiCall(
             }
         }
         else {
-
             return error(
-                `Failed [${req.status}] calling Proxmox API endpoint "${name}" from: ${url}!`,
+                `Failed [${req.status}] calling Pihole API endpoint "${name}" from ${chalk.blue(url)}!`,
                 {
                     verb,
                     url,
                     code: req.status,
-                    msg: req.statusText,
                     name,
                     ...(config.body ? { body: config.body } : {}),
                 },
@@ -113,3 +113,5 @@ export function proxmoxApiCall(
         }
     };
 }
+
+

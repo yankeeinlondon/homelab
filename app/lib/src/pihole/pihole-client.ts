@@ -1,5 +1,5 @@
 import type { PiholeClient } from "~/types";
-import { piholeApiCall } from "~/utils";
+import { piholeApiCall } from "./piholeApiCall";
 
 export type PiholeAddClientReq = {
   /** the client's IP, MAC, hostname, or interface */
@@ -34,11 +34,11 @@ export type PiholeClientSuggestionsResponse = {
   took: number;
 }
 
-export function piholeClientApi(
+export async function piholeClientApi(
   address: string,
   sid: string,
 ) {
-  const api = piholeApiCall(address, sid);
+  const api = await piholeApiCall(address, sid);
 
   return {
     /**

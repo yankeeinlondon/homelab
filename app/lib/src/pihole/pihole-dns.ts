@@ -1,5 +1,6 @@
 import type { PiholeBlockingStatus } from "~/types";
-import { piholeApiCall } from "../../utils/api";
+import { piholeApiCall } from "./piholeApiCall";
+
 
 export type PiholeBlockingStatusResponse = {
   blocking: PiholeBlockingStatus;
@@ -12,11 +13,11 @@ export type PihholeBlockingReq = {
   timer?: number | null;
 }
 
-export function piholeDnsApi(
+export async function piholeDnsApi(
   address: string,
   sid: string,
 ) {
-  const api = piholeApiCall(address, sid);
+  const api = await piholeApiCall(address, sid);
 
   return {
     /**

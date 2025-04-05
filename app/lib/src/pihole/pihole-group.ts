@@ -1,6 +1,7 @@
 import type { PiholeGroup, PiholeProcessingResult } from "~/types";
 import { isDefined } from "inferred-types";
-import { piholeApiCall } from "../../utils/api";
+import { piholeApiCall } from "./piholeApiCall";
+
 
 export type PiholeGroupResp = {
   groups: PiholeGroup[];
@@ -18,11 +19,11 @@ export type PiholeAddGroupResp = {
   took: number;
 }
 
-export function piholeGroupApi(
+export async function piholeGroupApi(
   address: string,
   sid: string,
 ) {
-  const api = piholeApiCall(address, sid);
+  const api = await piholeApiCall(address, sid);
 
   return {
 

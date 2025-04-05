@@ -11,6 +11,7 @@ import NetworkScanner from "network-scanner-js";
 
 let netScan = new NetworkScanner();
 
+
 type ExampleNetworks = 
 | "192.168.1.1"
 | "192.168.10.1"
@@ -51,8 +52,7 @@ export const Network = {
             return InvalidNetworkAddress(`ping() was passed an invalid address of "${address}"`, {address})
         }
 
-        // const poll = await netScan.poll(address, config);
-
+        return await netScan.poll(address);
     }
 }
 

@@ -1,7 +1,18 @@
 import type { Integer } from "inferred-types";
-import type { Domain, PiholeClient__History, PiholeClientHistoryTimestamp, PiholeHistory, PiholeQuery, PiholeQueryCountsByTypes, PiholeQueryOptions, PiholeStatsSummary, PiholeTopClient } from "~/types";
+import type { 
+    Domain,
+    PiholeClient__History, 
+    PiholeClientHistoryTimestamp, 
+    PiholeHistory, 
+    PiholeQuery, 
+    PiholeQueryCountsByTypes, 
+    PiholeQueryOptions, 
+    PiholeStatsSummary, 
+    PiholeTopClient 
+} from "~/types";
 import { isUndefined } from "inferred-types";
-import { piholeApiCall } from "../../utils/api";
+import { piholeApiCall } from "./piholeApiCall";
+
 
 export type PiholeQueriesResponse = {
   queries: PiholeQuery[];
@@ -51,11 +62,11 @@ export type PiholeClientHistoryResponse = {
   took: number;
 }
 
-export function piholeMetricsApi(
+export async function piholeMetricsApi(
   address: string,
   sid: string,
 ) {
-  const api = piholeApiCall(address, sid);
+  const api = await piholeApiCall(address, sid);
 
   return {
 

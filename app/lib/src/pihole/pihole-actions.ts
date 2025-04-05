@@ -1,13 +1,14 @@
-import { piholeApiCall } from "~/utils";
+import { piholeApiCall } from "./piholeApiCall";
+
 
 /**
  * Methods used to trigger certain actions on your Pi-hole
  */
-export function piholeActionsApi(
+export async function piholeActionsApi(
   address: string,
   sid: string,
 ) {
-  const api = piholeApiCall(address, sid);
+  const api = await piholeApiCall(address, sid);
 
   return {
 

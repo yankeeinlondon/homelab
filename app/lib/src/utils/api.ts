@@ -1,96 +1,157 @@
-import type { Dictionary } from "inferred-types";
-import type { HttpVerb, PiholeApiConfig } from "~/types";
-import chalk from "chalk";
-import { ensureLeading, ensureTrailing, isDefined, isObject, isString } from "inferred-types";
-import { PiholeApiError, ProxmoxApiError } from "~/errors";
-import { endpoint } from "~/utils";
+import type {   
+    DefineObject,  
+    Dictionary,  
+    Extends,  
+    Or,  
+    Suggest 
+} from "inferred-types"
+import type { HttpVerb } from "~/types";
+import type { AwsRegion, AwsService } from "~/types/aws";
 
-function stringify(body: unknown) {
-    return isString(body)
-        ? body
-        : isObject(body)
-            ? JSON.stringify(body)
-            : String(body);
+export type ApiAuthMethod = 
+| "none"
+| "Bearer Token"
+| `API Token`
+| `JWT Bearer`
+| `AWS Signature`
+| `Basic Auth`
+| `Digest Auth`
+| `OAuth1`
+| `OAuth2`
+| `Hawk`;
+
+export type JwtAlgorithm = 
+| "HS256"
+| "HS384"
+| "HS512"
+| "RS256"
+| "RS384"
+| "RS512"
+| "PS256"
+| "PS384"
+| "PS512"
+| "ES256"
+| "ES384"
+| "ES512"
+;
+
+export type ApiAuthLocation = "header" | "query-parameters" | "path";
+
+export type ApiAuthDetails<T extends ApiAuthMethod> = 
+Or<[
+    Extends<T, "none">, Extends<T, "Bearer Token">
+]> extends true 
+? []
+: T extends "JWT Bearer"
+? [ 
+    algo: JwtAlgorithm, 
+    baseEncoded: boolean, 
+    located: Exclude<ApiAuthLocation, "path">, 
+    headerPrefix: Suggest<"Bearer "> 
+]
+: T extends "AWS Signature"
+? [
+    located: Exclude<ApiAuthLocation, "query-parameters">,
+    region?: AwsRegion,
+    service?: Suggest<AwsService>,
+    sessionToken?: string
+]
+: [];
+
+export type RestApiCall<TVerb extends HttpVerb> = <TReqParams extends Dictionary<string>>(params: TReqParams) => {
+
 }
 
-function isErrorResponse(val: unknown): boolean {
-    return isObject(val) && (
-        "errors" in val
-        || "error" in val
-        || Object.keys(val).reduce(
-            (acc, key) => isObject(val[key]) && "errors" in val[key]
-                ? true
-                : acc,
-            false,
-        )
-    );
+export type ApiRestPath = {
+    path: string;
+    desc?: string;
+    get?: {req: RestApiCall<"GET">, desc?: string};
+    post?: {req: RestApiCall<"POST">, desc?: string};
+    patch?: {req: RestApiCall<"PATCH">, desc?: string};
+    put?: {req: RestApiCall<"PUT">, desc?: string};
+    delete?: {req: RestApiCall<"DELETE">, desc?: string};
+    head?: {req: RestApiCall<"HEAD">, desc?: string};
 }
 
-export function piholeApiCall(
-    address: string,
-    sid: string,
+
+export function pathApi(path: string, desc?: string) {
+
+    return {
+        get<TErrCodes extends readonly number[]>(
+            request: DefineObject,
+            response: "string" | "number" | DefineObject,
+            expectedErrorCodes: TErrCodes,
+            errHandler?: any
+        ) {
+
+        }
+    }
+}
+
+export type ApiEnvironment = {
+    name: string;
+    baseUrl: string;
+    desc?: string;
+}
+
+function api<
+    TState extends {
+        name: string;
+        paths: readonly ApiRestPath[];
+        authMethod: ApiAuthMethod;
+        authDetails: ApiAuthDetails<ApiAuthMethod>;
+        baseUrl?: string;
+        environments?: ApiEnvironment[];
+    }
+>(state: TState) {
+    return {
+            addPath(path: string, desc?: string) {
+                return pathApi(path, desc)
+            },
+            /** 
+             * Add a base URL to the environment for APIs
+             * which will have a single static base URL path.
+             */
+            addBaseUrl(url: string) { 
+
+            },
+            /**
+             * Allow an ENV variables (or set of ENV variables)
+             * to dictate the BaseUrl. Making this dynamic based
+             * on the ENV variables used at time of calling.
+             */
+            addBaseUrlEnv<T extends readonly string[]>(...urlEnvVars: T) {
+
+            },
+
+            /**
+             * In contrast to having a singular base environment, it may be
+             * better to use 
+             */
+            addEnv(name: string, baseUrl: string, desc?: string) {
+                return {
+                    ...state,
+                    environments: state.environments
+                        ? state.environments.push({name,baseUrl,desc})
+                        : [{name,baseUrl,desc}]
+                }
+            }
+    }
+}
+
+export function createRestApi<
+    TAuth extends ApiAuthMethod,
+    TAuthDetails extends ApiAuthDetails<TAuth>
+>(
+    name: string,
+    authMethod: TAuth,
+    ...authDetails: TAuthDetails
 ) {
-    address = ensureLeading(address, "http");
-    address = ensureTrailing(address, ":8006/api2/json");
-    const error = PiholeApiError(address, sid);
 
-    return async <
-        TSchema extends [req: Dictionary<string>, resp: unknown] = [never, unknown],
-        TVerb extends HttpVerb = HttpVerb,
-    >(
-        verb: TVerb,
-        name: string,
-        path: string,
-        config: TVerb extends "GET" ? PiholeApiConfig<never, TSchema[0]> : PiholeApiConfig<TSchema[0]> = {},
-    ): Promise<TSchema[1] | Error> => {
-        const headers = {
-            Accept: "*/*",
-            "Accept-Encoding": "gzip, deflate, br"
-        };
-        const url = verb === "GET" && isDefined(config.qp)
-            ? endpoint(address, path, sid, config.qp)
-            : endpoint(address, path, sid);
-        const opt = config.body
-            ? { method: verb, body: stringify(config.body), headers }
-            : { method: verb, headers };
-        
-        // TODO: This isn't great but the builtin `fetch` does
-        // not support adding an https agent which will accept
-        // local certs
-        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0' 
-
-        const req = await fetch(url, opt);
-        if (req.ok) {
-            const result = await req.json();
-            if (isErrorResponse(result)) {
-
-                return error(
-                    `Request to "${name}" [${url}] had errors in response`,
-                    {
-                        result,
-                        ...(config.body ? { body: config.body } : {}),
-                        verb,
-                        url,
-                    },
-                );
-            }
-            else {
-                return result;
-            }
-        }
-        else {
-            return error(
-                `Failed [${req.status}] calling Pihole API endpoint "${name}" from ${chalk.blue(url)}!`,
-                {
-                    verb,
-                    url,
-                    code: req.status,
-                    name,
-                    ...(config.body ? { body: config.body } : {}),
-                },
-            );
-        }
-    };
+    return api({
+        name,
+        authMethod,
+        authDetails,
+        paths: []
+    });
 }
-
-

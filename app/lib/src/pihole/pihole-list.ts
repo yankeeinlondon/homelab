@@ -1,11 +1,12 @@
 import type { AllowBlock, PiholeList } from "~/types";
-import { piholeApiCall } from "../../utils/api";
+import { piholeApiCall } from "./piholeApiCall";
 
-export function piholeListApi(
+
+export async function piholeListApi(
   address: string,
   sid: string,
 ) {
-  const api = piholeApiCall(address, sid);
+  const api = await piholeApiCall(address, sid);
 
   return {
     /**

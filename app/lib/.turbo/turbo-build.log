@@ -9,8 +9,82 @@
 [34mCLI[39m Using tsup config: /Volumes/coding/personal/homelab/app/lib/tsup.config.ts
 [34mCLI[39m Target: esnext
 [34mESM[39m Build start
-[32mESM[39m [1mdist/index.mjs [22m[32m77.34 KB[39m
-[32mESM[39m ⚡️ Build success in 11ms
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mCannot find module './crypto/build/Release/sshcrypto.node'
+Require stack:
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/chunk-TWFEYLU4.js
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/chunk-R3P2Q4VY.js
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/cli-default.js[0m [1m[35m[plugin native-node-modules][0m
+
+    ../../node_modules/.pnpm/ssh2@1.16.0/node_modules/ssh2/lib/protocol/crypto.js:30:20:
+[37m      30 │   binding = require([32m'./crypto/build/Release/sshcrypto.node'[37m);
+         ╵                     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  This error came from the "onResolve" callback registered here:
+
+    ../../node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/index.js:393:13:
+[37m      393 │       build2.[32monResolve[37m({ filter: /\.node$/, namespace: "file" }, (args) => {
+          ╵              [32m~~~~~~~~~[0m
+
+    at setup (/Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/index.js:393:14)
+    at handlePlugins (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:1150:21)
+    at buildOrContextImpl (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:873:5)
+    at Object.buildOrContext (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:699:5)
+    at /Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:2029:15
+    at new Promise (<anonymous>)
+    at Object.build (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:2028:25)
+    at build (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:1879:51)
+    at runEsbuild (/Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/index.js:521:35)
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mCannot find module '../build/Release/cpufeatures.node'
+Require stack:
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/chunk-TWFEYLU4.js
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/chunk-R3P2Q4VY.js
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/cli-default.js[0m [1m[35m[plugin native-node-modules][0m
+
+    ../../node_modules/.pnpm/cpu-features@0.0.10/node_modules/cpu-features/lib/index.js:3:24:
+[37m      3 │ const binding = require([32m'../build/Release/cpufeatures.node'[37m);
+        ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  This error came from the "onResolve" callback registered here:
+
+    ../../node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/index.js:393:13:
+[37m      393 │       build2.[32monResolve[37m({ filter: /\.node$/, namespace: "file" }, (args) => {
+          ╵              [32m~~~~~~~~~[0m
+
+    at setup (/Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/index.js:393:14)
+    at handlePlugins (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:1150:21)
+    at buildOrContextImpl (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:873:5)
+    at Object.buildOrContext (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:699:5)
+    at /Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:2029:15
+    at new Promise (<anonymous>)
+    at Object.build (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:2028:25)
+    at build (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:1879:51)
+    at runEsbuild (/Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/index.js:521:35)
+
+[31mESM[39m [31mBuild failed[39m
+[31mError: Build failed with 2 errors:
+../../node_modules/.pnpm/cpu-features@0.0.10/node_modules/cpu-features/lib/index.js:3:24: ERROR: [plugin: native-node-modules] Cannot find module '../build/Release/cpufeatures.node'
+Require stack:
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/chunk-TWFEYLU4.js
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/chunk-R3P2Q4VY.js
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/cli-default.js
+../../node_modules/.pnpm/ssh2@1.16.0/node_modules/ssh2/lib/protocol/crypto.js:30:20: ERROR: [plugin: native-node-modules] Cannot find module './crypto/build/Release/sshcrypto.node'
+Require stack:
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/chunk-TWFEYLU4.js
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/chunk-R3P2Q4VY.js
+- /Volumes/coding/personal/homelab/node_modules/.pnpm/tsup@8.3.6_@microsoft+api-extractor@7.50.1_@types+node@22.13.5__jiti@2.4.2_postcss@8.5.3_typescript@5.7.3_yaml@2.7.0/node_modules/tsup/dist/cli-default.js
+    at failureErrorWithLog (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:1476:15)
+    at /Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:945:25
+    at runOnEndCallbacks (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:1316:45)
+    at buildResponseToResult (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:943:7)
+    at /Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:970:16
+    at responseCallbacks.<computed> (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:622:9)
+    at handleIncomingPacket (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:677:12)
+    at Socket.readFromStdout (/Volumes/coding/personal/homelab/node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:600:7)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)[39m
 DTS Build start
-DTS ⚡️ Build success in 762ms
-DTS dist/index.d.ts 25.93 KB
+src/pihole/pihole.ts(9,10): error TS2305: Module '"~/utils"' has no exported member 'endpoint'.
+
+DTS Build error
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
