@@ -42,7 +42,7 @@ export function proxmoxNodesAptApi(
                 "GET",
                 "getAptPackagesInstalled",
                 `nodes/${node}/apt/repositories`
-            )
+            )  
         },
 
         /**

@@ -1,9 +1,10 @@
 import { createKindError } from "@yankeeinlondon/kind-error";
+import type { PiholeApi } from "./pihole";
 
-export function PiholeApiError(address: string, sid: string) {
+export function PiholeApiError(config: PiholeApi) {
   return createKindError(
     "PiholeApiError",
-    { address, sid },
+    { baseUrl: config.baseUrl, sid: config.sid },
   );
 }
 
@@ -23,13 +24,26 @@ export function NotFound(address: string, sid: string) {
 }
 
 export const FailedAuth = createKindError(
-  "FailedAuth",
+  "FailedAuth", {
+    code: 401
+  }
 );
 
 export const RequirementMissing = createKindError(
-  "RequirementsMissing",
+  "RequirementMissing", {
+    code: 500
+  }
 );
 
 export const InvalidNetworkAddress = createKindError(
-    "InvalidNetworkAddress"
+    "InvalidNetworkAddress", {
+        code: 400
+    }
 )
+
+export const UnexpectedError = createKindError("Unexpected", {
+    code: 400
+});
+
+console.log(UnexpectedError.name);
+

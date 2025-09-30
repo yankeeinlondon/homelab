@@ -1,4 +1,10 @@
-import type { Dictionary, DnsName, Integer, Ip4Address, Suggest } from "inferred-types";
+import type { 
+    Dictionary, 
+    DnsName, 
+    Integer, 
+    Ip4Address, 
+    Suggest 
+} from "inferred-types";
 
 export interface PiholeAuthResponse__SUCCESS {
   session: {
@@ -10,6 +16,7 @@ export interface PiholeAuthResponse__SUCCESS {
     message: string;
   };
   took: number;
+  server: string;
 }
 
 export interface PiholeAuthReponse__FAILURE {

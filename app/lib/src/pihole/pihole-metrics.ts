@@ -12,6 +12,7 @@ import type {
 } from "~/types";
 import { isUndefined } from "inferred-types";
 import { piholeApiCall } from "./piholeApiCall";
+import type { PiholeApi } from "./pihole";
 
 
 export type PiholeQueriesResponse = {
@@ -62,11 +63,10 @@ export type PiholeClientHistoryResponse = {
   took: number;
 }
 
-export async function piholeMetricsApi(
-  address: string,
-  sid: string,
+export function piholeMetricsApi(
+  config: PiholeApi
 ) {
-  const api = await piholeApiCall(address, sid);
+  const api = piholeApiCall(config);
 
   return {
 

@@ -1,9 +1,11 @@
 import type { Dictionary } from "inferred-types";
 import type { HttpVerb, PiholeApiConfig } from "~/types";
 import chalk from "chalk";
-import { ensureLeading, ensureTrailing, isDefined, isObject, isString } from "inferred-types";
-import { PiholeApiError } from "~/errors";
-import { asQueryParameter } from "~/utils";
+import {  isObject, isString } from "inferred-types";
+import { PiholeApiError, ProxmoxApiError } from "~/errors";
+import { asQueryParameter, isOk, request } from "~/utils";
+import type { PiholeApi } from "./pihole";
+import { join } from "node:path";
 
 function stringify(body: unknown) {
     return isString(body)
@@ -26,34 +28,25 @@ function isErrorResponse(val: unknown): boolean {
     );
 }
 
-export function endpoint<
+function endpoint<
   T extends string,
   Q extends Record<string, unknown>,
 >(
-    address: T, 
+    api: PiholeApi, 
     offset: string, 
-    sid?: string, 
-    qpDefn?: Q
+    config: PiholeApiConfig<any,any>
 ) {
-  const qp = asQueryParameter({
-    sid,
-    ...(qpDefn || {}),
-  });
+  const qp = config.qp 
+    ? asQueryParameter({...config.qp, sid: api.sid})
+    : asQueryParameter({ sid: api.sid });
 
-  return sid
-    ? offset === ""
-      ? `https://${address}/api${qp}`
-      : `https://${address}/api/${offset}${qp}`
-    : `https://${address}/api/${offset}${qp}`;
+  return join(api.baseUrl, `${offset}${qp}`)
 }
 
-export async function piholeApiCall(
-    address: string,
-    sid: string,
+export function piholeApiCall(
+    api: PiholeApi
 ) {
-    address = ensureLeading(address, "http");
-    address = ensureTrailing(address, ":8006/api2/json");
-    const error = PiholeApiError(address, sid);
+    const { sid, baseUrl, skipValidation } = api;
 
     return async <
         TSchema extends [req: Dictionary<string>, resp: unknown] = [never, unknown],
@@ -64,29 +57,35 @@ export async function piholeApiCall(
         path: string,
         config: TVerb extends "GET" ? PiholeApiConfig<never, TSchema[0]> : PiholeApiConfig<TSchema[0]> = {},
     ): Promise<TSchema[1] | Error> => {
-        const headers = {
-            Accept: "*/*",
-            "Accept-Encoding": "gzip, deflate, br"
-        };
-        const url = verb === "GET" && isDefined(config.qp)
-            ? endpoint(address, path, sid, config.qp)
-            : endpoint(address, path, sid);
-        const opt = config.body
-            ? { method: verb, body: stringify(config.body), headers }
-            : { method: verb, headers };
-        
-        // TODO: This isn't great but the builtin `fetch` does
-        // not support adding an https agent which will accept
-        // local certs
-        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0' 
+        const fetch = request({
+            baseUrl,
+            skipValidation,
+            // defaultError: PiholeApiError(api)
+        });
 
-        const req = await fetch(url, opt);
-        if (req.ok) {
+        // const headers = {
+        //     Accept: "*/*",
+        //     "Accept-Encoding": "gzip, deflate, br"
+        // };
+        // const url = verb === "GET" && isDefined(config.qp)
+        //     ? endpoint(address, path, sid, config.qp)
+        //     : endpoint(address, path, sid);
+        // const opt = config.body
+        //     ? { method: verb, body: stringify(config.body), headers }
+        //     : { method: verb, headers };
+        
+
+        const req = await fetch(endpoint(api,path,config), {
+            method: verb,
+        });
+        
+
+        if (isOk(req)) {
             const result = await req.json();
             if (isErrorResponse(result)) {
 
                 return error(
-                    `Request to "${name}" [${url}] had errors in response`,
+                    `Request to "${name}" [${join(baseUrl,path)}] had errors in response`,
                     {
                         result,
                         ...(config.body ? { body: config.body } : {}),

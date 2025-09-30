@@ -1,12 +1,12 @@
 import type { PiholeConfig } from "~/types";
 import { piholeApiCall } from "./piholeApiCall";
+import type { PiholeApi } from "./pihole";
 
 
-export async function piholeConfigApi(
-  address: string,
-  sid: string,
+export function piholeConfigApi(
+  config: PiholeApi
 ) {
-  const api = await piholeApiCall(address, sid);
+  const api = piholeApiCall(config);
 
   return {
     getConfig<D extends boolean = false>(

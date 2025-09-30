@@ -1,5 +1,11 @@
-import type { PiholeDevice, PiholeGateway, PiholeInterface, PiholeRoute } from "~/types";
+import type { 
+    PiholeDevice, 
+    PiholeGateway, 
+    PiholeInterface, 
+    PiholeRoute 
+} from "~/types";
 import { piholeApiCall } from "./piholeApiCall";
+import type { PiholeApi } from "./pihole";
 
 
 export type PiholeGetDevicesReq = {
@@ -39,11 +45,10 @@ export type PiholeGetRoutesRes = {
   took: number;
 }
 
-export async function piholeNetworkApi(
-  address: string,
-  sid: string,
+export function piholeNetworkApi(
+  config: PiholeApi
 ) {
-  const api = await piholeApiCall(address, sid);
+  const api = piholeApiCall(config);
 
   return {
     /**

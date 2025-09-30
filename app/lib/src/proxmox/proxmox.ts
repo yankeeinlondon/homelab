@@ -1,3 +1,4 @@
+import { createRestApi } from "~/utils";
 import { proxmoxAccessApi } from "./api-areas/access";
 import { proxmoxClusterApi } from "./api-areas/cluster";
 import { proxmoxNodesApi } from "./api-areas/nodes";
@@ -21,4 +22,12 @@ export function Proxmox(host: string, key: string ) {
         pools,
         storage
     }
+}
+
+// TODO: how easily can old method be switched?
+export function Pm2(
+    host: string, key: string
+) {
+    const api = createRestApi("Proxmox", "Bearer Token");
+    api.addPath("nodes/:node/apt/repositories")
 }
